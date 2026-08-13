@@ -122,3 +122,9 @@ body {
 .animate-ambient-blue {
   animation: ambient-blue-flow 14s ease-in-out infinite;
 }
+
+/* Ensure select dropdown options are visible across all OS defaults */
+option {
+  background-color: #0f172a;
+  color: #ffffff;
+}
