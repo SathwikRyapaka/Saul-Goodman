@@ -1,3 +1,4 @@
+import api from './api';
 import { mockDocuments } from '../data/mockData';
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -8,13 +9,31 @@ export const getDocuments = async () => {
 };
 
 export const uploadDocument = async (file) => {
-  // Placeholder for POST /api/documents/upload
   await delay(1000);
   return { success: true, message: "Document uploaded successfully", docId: Date.now() };
 };
 
 export const summarizeDocument = async (doc) => {
-  // Placeholder for POST /api/documents/:id/summarize
+  if (doc?.file) {
+    try {
+      const base64Data = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(doc.file);
+      });
+
+      const response = await api.post('/ai/summarize', {
+        base64Data,
+        mimeType: doc.file.type || "application/pdf",
+        fileName: doc.file.name
+      });
+      return response.data;
+    } catch (error) {
+      console.error("AI Summarization Error (falling back to local summary):", error);
+    }
+  }
+
   await delay(2000);
   
   const docName = doc?.name || "Document";

@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '50mb' })); // Increased limit for Base64 PDF uploads
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
