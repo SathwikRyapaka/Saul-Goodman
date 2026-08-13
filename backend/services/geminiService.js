@@ -3,7 +3,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 exports.extractTextViaOCR = async (base64Data, mimeType) => {
   if (!process.env.GEMINI_API_KEY) throw new Error("Missing Gemini API Key");
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
 
   const prompt = "Please perform OCR on this document and return strictly the raw text contents. Do not summarize, just extract the text exactly as written.";
   const parts = [
@@ -18,7 +18,7 @@ exports.extractTextViaOCR = async (base64Data, mimeType) => {
 exports.generateCaseSummary = async (structuredData, rawText) => {
   if (!process.env.GEMINI_API_KEY) throw new Error("Missing Gemini API Key");
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
 
   const prompt = `You are a court-document information assistant.
 Use ONLY the information provided in the court record.
