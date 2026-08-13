@@ -56,7 +56,7 @@ const documentSchema = new mongoose.Schema({
     }],
     importantProceedings: [{ type: String }],
     disposalDetails: { type: String },
-    actsAndSections: [{ type: String }],
+    actsAndSections: [{ type: mongoose.Schema.Types.Mixed }],
     simpleEnglishExplanation: { type: String },
     teluguExplanation: { type: String },
     importantPoints: [{ type: String }]
