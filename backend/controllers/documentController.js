@@ -62,6 +62,12 @@ exports.uploadAndProcess = async (req, res) => {
     // Call Gemini AI
     try {
       const aiSummary = await generateCaseSummary(structuredData, rawText);
+      
+      // Override brittle regex extraction with highly accurate AI extraction
+      if (aiSummary.parties) docRecord.structuredCaseData.parties = aiSummary.parties;
+      if (aiSummary.caseHistory) docRecord.structuredCaseData.caseHistory = aiSummary.caseHistory;
+      if (aiSummary.actsAndSections) docRecord.structuredCaseData.actsAndSections = aiSummary.actsAndSections;
+
       docRecord.aiSummary = aiSummary;
       docRecord.processingStatus = 'completed';
       await docRecord.save();

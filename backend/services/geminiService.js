@@ -37,13 +37,13 @@ Return exactly a JSON object matching this structure:
   "caseStatus": "The exact case status",
   "currentStage": "The exact current stage",
   "importantDates": [{"label": "Filing Date", "date": "..."}],
-  "parties": {"petitioner": [], "respondent": []},
+  "parties": {"petitioner": [{"name": "...", "role": "Petitioner"}], "respondent": [{"name": "...", "role": "Respondent"}]},
+  "caseHistory": [{"businessDate": "...", "nextHearingDate": "..."}],
   "importantProceedings": ["..."],
   "disposalDetails": "...",
-  "actsAndSections": ["..."],
+  "actsAndSections": [{"act": "..."}],
   "simpleEnglishExplanation": "...",
-  "teluguExplanation": "...",
-  "importantPoints": ["..."]
+  "teluguExplanation": "..."
 }
 
 Do not include markdown \`\`\`json blocks, just the pure JSON.`;
