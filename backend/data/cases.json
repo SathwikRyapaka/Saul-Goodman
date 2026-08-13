@@ -1,0 +1,701 @@
+[
+  {
+    "case_id": 1,
+    "state": "Telangana",
+    "district": "Medak",
+    "court_complex": "Medak, PDJ Court Complex",
+    "establishment": "Jr. Civil Courts, Medak",
+    "court_number": "1",
+    "court_name": "Principal Junior Civil Judge-cum-Judicial Magistrate of First Class, Medak",
+    "case_type": "OS - ORIGINAL SUIT",
+    "case_number": "OS/545/2023",
+    "case_year": 2023,
+    "filing_number": "OS/698/2023",
+    "filing_date": "22-09-2023",
+    "registration_number": "OS/545/2023",
+    "registration_date": "22-09-2023",
+    "cnr_number": "TSME0A0017352023",
+    "case_status": "Case disposed",
+    "first_hearing_date": "22-09-2023",
+    "decision_date": "18-01-2025",
+    "nature_of_disposal": "Uncontested--TRANSFERRED",
+    "last_order": "Transferred",
+    "case_transferred_to_establishment": "TSME0A0017352023",
+    "transfer_date": "18-01-2025",
+    "under_acts": [
+      {
+        "act": "CODE OF CIVIL PROCEDURE",
+        "sections": [
+          "26"
+        ]
+      }
+    ],
+    "petitioners": [
+      {
+        "name": "Thudum Laxmi @ Allaram Laxmi",
+        "advocate": "V. Raji Reddy ADV"
+      }
+    ],
+    "respondents": [
+      {
+        "name": "Thuddum Pochamma"
+      },
+      {
+        "name": "Thudum Poolamma"
+      },
+      {
+        "name": "Thudum Laxminarayana"
+      },
+      {
+        "name": "Thudum Shyamala @ Shayamala"
+      },
+      {
+        "name": "Thududm Amrutha"
+      },
+      {
+        "name": "Patlola Narender Reddy"
+      },
+      {
+        "name": "Ragiboguda Neeraja"
+      }
+    ],
+    "case_history": [
+      {
+        "business_date": "22-09-2023",
+        "next_hearing_date": "06-11-2023"
+      },
+      {
+        "business_date": "06-11-2023",
+        "next_hearing_date": "23-01-2024"
+      },
+      {
+        "business_date": "23-01-2024",
+        "next_hearing_date": "26-03-2024"
+      },
+      {
+        "business_date": "26-03-2024",
+        "next_hearing_date": "24-06-2024"
+      },
+      {
+        "business_date": "24-06-2024",
+        "next_hearing_date": "06-09-2024"
+      }
+    ]
+  },
+  {
+    "case_id": 2,
+    "state": "Telangana",
+    "district": "Medak",
+    "court_complex": "Medak, PDJ Court Complex",
+    "establishment": "Jr. Civil Courts, Medak",
+    "court_number": "1",
+    "court_name": "Principal Junior Civil Judge-cum-Judicial Magistrate of First Class, Medak",
+    "case_type": "OS - ORIGINAL SUIT",
+    "case_number": "OS/943/2022",
+    "case_year": 2022,
+    "filing_number": "OS/943/2022",
+    "filing_date": "04-02-2020",
+    "registration_number": "OS/545/2022",
+    "registration_date": "04-02-2020",
+    "cnr_number": "TSME0A0015662022",
+    "case_status": "Case disposed",
+    "first_hearing_date": "21-12-2022",
+    "decision_date": "05-10-2023",
+    "nature_of_disposal": "Uncontested--TRANSFERRED",
+    "last_order": "Transferred",
+    "case_transferred_to_establishment": "TSME0A0015662022",
+    "transfer_date": "05-10-2023",
+    "under_acts": [
+      {
+        "act": "CODE OF CIVIL PROCEDURE",
+        "sections": [
+          "26",
+          "151"
+        ]
+      }
+    ],
+    "petitioners": [
+      {
+        "name": "Mallepally Srinivas",
+        "advocate": "K. Srinivas Reddy ADV"
+      }
+    ],
+    "respondents": [
+      {
+        "name": "Gaddam Rajamma"
+      },
+      {
+        "name": "Gaddam Ramesh"
+      },
+      {
+        "name": "Mallepally Anitha"
+      }
+    ],
+    "case_history": [
+      {
+        "business_date": "21-12-2022",
+        "next_hearing_date": "24-01-2023"
+      },
+      {
+        "business_date": "24-01-2023",
+        "next_hearing_date": "14-03-2023"
+      },
+      {
+        "business_date": "14-03-2023",
+        "next_hearing_date": "11-07-2023"
+      },
+      {
+        "business_date": "11-07-2023",
+        "next_hearing_date": "05-10-2023"
+      },
+      {
+        "business_date": "05-10-2023",
+        "next_hearing_date": null
+      }
+    ]
+  },
+  {
+    "case_id": 3,
+    "state": "Telangana",
+    "district": "Medak",
+    "court_complex": "Medak, PDJ Court Complex",
+    "establishment": "Jr. Civil Courts, Medak",
+    "court_number": "1",
+    "court_name": "Principal Junior Civil Judge-cum-Judicial Magistrate of First Class, Medak",
+    "case_type": "OS - ORIGINAL SUIT",
+    "case_number": "OS/118/2024",
+    "case_year": 2024,
+    "filing_number": "OS/146/2024",
+    "filing_date": "18-03-2024",
+    "registration_number": "OS/118/2024",
+    "registration_date": "18-03-2024",
+    "cnr_number": "TSME0A0018422024",
+    "case_status": "Pending",
+    "first_hearing_date": "18-03-2024",
+    "decision_date": null,
+    "nature_of_disposal": null,
+    "last_order": "For filing of written statement",
+    "case_transferred_to_establishment": null,
+    "transfer_date": null,
+    "under_acts": [
+      {
+        "act": "CODE OF CIVIL PROCEDURE",
+        "sections": [
+          "26",
+          "151"
+        ]
+      }
+    ],
+    "petitioners": [
+      {
+        "name": "Chintala Rajesh",
+        "advocate": "P. Mahesh Kumar ADV"
+      }
+    ],
+    "respondents": [
+      {
+        "name": "Kondam Lakshmi"
+      },
+      {
+        "name": "Kondam Srinivas"
+      }
+    ],
+    "case_history": [
+      {
+        "business_date": "18-03-2024",
+        "next_hearing_date": "22-04-2024"
+      },
+      {
+        "business_date": "22-04-2024",
+        "next_hearing_date": "17-06-2024"
+      },
+      {
+        "business_date": "17-06-2024",
+        "next_hearing_date": "19-08-2024"
+      },
+      {
+        "business_date": "19-08-2024",
+        "next_hearing_date": "21-10-2024"
+      },
+      {
+        "business_date": "21-10-2024",
+        "next_hearing_date": "16-12-2024"
+      }
+    ]
+  },
+  {
+    "case_id": 4,
+    "state": "Telangana",
+    "district": "Medak",
+    "court_complex": "Medak, PDJ Court Complex",
+    "establishment": "Jr. Civil Courts, Medak",
+    "court_number": "1",
+    "court_name": "Principal Junior Civil Judge-cum-Judicial Magistrate of First Class, Medak",
+    "case_type": "OS - ORIGINAL SUIT",
+    "case_number": "OS/267/2024",
+    "case_year": 2024,
+    "filing_number": "OS/302/2024",
+    "filing_date": "09-07-2024",
+    "registration_number": "OS/267/2024",
+    "registration_date": "09-07-2024",
+    "cnr_number": "TSME0A0021042024",
+    "case_status": "Pending",
+    "first_hearing_date": "09-07-2024",
+    "decision_date": null,
+    "nature_of_disposal": null,
+    "last_order": "For service of summons",
+    "case_transferred_to_establishment": null,
+    "transfer_date": null,
+    "under_acts": [
+      {
+        "act": "CODE OF CIVIL PROCEDURE",
+        "sections": [
+          "26"
+        ]
+      }
+    ],
+    "petitioners": [
+      {
+        "name": "Bandi Shankar",
+        "advocate": "M. Ravinder ADV"
+      }
+    ],
+    "respondents": [
+      {
+        "name": "Ponnala Sujatha"
+      },
+      {
+        "name": "Ponnala Naveen"
+      }
+    ],
+    "case_history": [
+      {
+        "business_date": "09-07-2024",
+        "next_hearing_date": "06-08-2024"
+      },
+      {
+        "business_date": "06-08-2024",
+        "next_hearing_date": "17-09-2024"
+      },
+      {
+        "business_date": "17-09-2024",
+        "next_hearing_date": "29-10-2024"
+      },
+      {
+        "business_date": "29-10-2024",
+        "next_hearing_date": "10-12-2024"
+      }
+    ]
+  },
+  {
+    "case_id": 5,
+    "state": "Telangana",
+    "district": "Sangareddy",
+    "court_complex": "Sangareddy, District Court Complex",
+    "establishment": "Senior Civil Judge Court, Sangareddy",
+    "court_number": "2",
+    "court_name": "Senior Civil Judge, Sangareddy",
+    "case_type": "OS - ORIGINAL SUIT",
+    "case_number": "OS/76/2023",
+    "case_year": 2023,
+    "filing_number": "OS/91/2023",
+    "filing_date": "13-02-2023",
+    "registration_number": "OS/76/2023",
+    "registration_date": "13-02-2023",
+    "cnr_number": "TSSG0A0012042023",
+    "case_status": "Case disposed",
+    "first_hearing_date": "13-02-2023",
+    "decision_date": "19-11-2024",
+    "nature_of_disposal": "Disposed on merits",
+    "last_order": "Suit decreed",
+    "case_transferred_to_establishment": null,
+    "transfer_date": null,
+    "under_acts": [
+      {
+        "act": "CODE OF CIVIL PROCEDURE",
+        "sections": [
+          "26",
+          "96"
+        ]
+      }
+    ],
+    "petitioners": [
+      {
+        "name": "Vemula Srinivas",
+        "advocate": "A. Narasimha Rao ADV"
+      }
+    ],
+    "respondents": [
+      {
+        "name": "Kothapally Ramesh"
+      },
+      {
+        "name": "Kothapally Padma"
+      }
+    ],
+    "case_history": [
+      {
+        "business_date": "13-02-2023",
+        "next_hearing_date": "27-03-2023"
+      },
+      {
+        "business_date": "27-03-2023",
+        "next_hearing_date": "22-05-2023"
+      },
+      {
+        "business_date": "22-05-2023",
+        "next_hearing_date": "18-09-2023"
+      },
+      {
+        "business_date": "18-09-2023",
+        "next_hearing_date": "15-01-2024"
+      },
+      {
+        "business_date": "15-01-2024",
+        "next_hearing_date": "19-11-2024"
+      },
+      {
+        "business_date": "19-11-2024",
+        "next_hearing_date": null
+      }
+    ]
+  },
+  {
+    "case_id": 6,
+    "state": "Telangana",
+    "district": "Sangareddy",
+    "court_complex": "Sangareddy, District Court Complex",
+    "establishment": "Junior Civil Judge Court, Patancheru",
+    "court_number": "1",
+    "court_name": "Junior Civil Judge-cum-Judicial Magistrate of First Class, Patancheru",
+    "case_type": "OS - ORIGINAL SUIT",
+    "case_number": "OS/214/2024",
+    "case_year": 2024,
+    "filing_number": "OS/238/2024",
+    "filing_date": "05-06-2024",
+    "registration_number": "OS/214/2024",
+    "registration_date": "05-06-2024",
+    "cnr_number": "TSSG0B0019672024",
+    "case_status": "Pending",
+    "first_hearing_date": "05-06-2024",
+    "decision_date": null,
+    "nature_of_disposal": null,
+    "last_order": "For evidence of plaintiff",
+    "case_transferred_to_establishment": null,
+    "transfer_date": null,
+    "under_acts": [
+      {
+        "act": "CODE OF CIVIL PROCEDURE",
+        "sections": [
+          "26",
+          "151"
+        ]
+      }
+    ],
+    "petitioners": [
+      {
+        "name": "Kandukuri Prasad",
+        "advocate": "S. Kiran Kumar ADV"
+      }
+    ],
+    "respondents": [
+      {
+        "name": "Madhavi Rani"
+      },
+      {
+        "name": "Madhavi Enterprises"
+      }
+    ],
+    "case_history": [
+      {
+        "business_date": "05-06-2024",
+        "next_hearing_date": "03-07-2024"
+      },
+      {
+        "business_date": "03-07-2024",
+        "next_hearing_date": "28-08-2024"
+      },
+      {
+        "business_date": "28-08-2024",
+        "next_hearing_date": "16-10-2024"
+      },
+      {
+        "business_date": "16-10-2024",
+        "next_hearing_date": "04-12-2024"
+      }
+    ]
+  },
+  {
+    "case_id": 7,
+    "state": "Telangana",
+    "district": "Siddipet",
+    "court_complex": "Siddipet, District Court Complex",
+    "establishment": "Junior Civil Judge Court, Siddipet",
+    "court_number": "1",
+    "court_name": "Junior Civil Judge-cum-Judicial Magistrate of First Class, Siddipet",
+    "case_type": "OS - ORIGINAL SUIT",
+    "case_number": "OS/391/2023",
+    "case_year": 2023,
+    "filing_number": "OS/428/2023",
+    "filing_date": "11-08-2023",
+    "registration_number": "OS/391/2023",
+    "registration_date": "11-08-2023",
+    "cnr_number": "TSSP0A0014282023",
+    "case_status": "Case disposed",
+    "first_hearing_date": "11-08-2023",
+    "decision_date": "27-02-2025",
+    "nature_of_disposal": "Compromised",
+    "last_order": "Suit disposed in terms of compromise",
+    "case_transferred_to_establishment": null,
+    "transfer_date": null,
+    "under_acts": [
+      {
+        "act": "CODE OF CIVIL PROCEDURE",
+        "sections": [
+          "26",
+          "89"
+        ]
+      }
+    ],
+    "petitioners": [
+      {
+        "name": "Yerraguntla Mallikarjun",
+        "advocate": "T. Srinivas ADV"
+      }
+    ],
+    "respondents": [
+      {
+        "name": "Komuravelli Rajitha"
+      },
+      {
+        "name": "Komuravelli Anil"
+      }
+    ],
+    "case_history": [
+      {
+        "business_date": "11-08-2023",
+        "next_hearing_date": "18-09-2023"
+      },
+      {
+        "business_date": "18-09-2023",
+        "next_hearing_date": "06-11-2023"
+      },
+      {
+        "business_date": "06-11-2023",
+        "next_hearing_date": "22-01-2024"
+      },
+      {
+        "business_date": "22-01-2024",
+        "next_hearing_date": "27-02-2025"
+      },
+      {
+        "business_date": "27-02-2025",
+        "next_hearing_date": null
+      }
+    ]
+  },
+  {
+    "case_id": 8,
+    "state": "Telangana",
+    "district": "Nizamabad",
+    "court_complex": "Nizamabad, District Court Complex",
+    "establishment": "Junior Civil Judge Court, Nizamabad",
+    "court_number": "3",
+    "court_name": "Junior Civil Judge-cum-Judicial Magistrate of First Class, Nizamabad",
+    "case_type": "OS - ORIGINAL SUIT",
+    "case_number": "OS/152/2024",
+    "case_year": 2024,
+    "filing_number": "OS/174/2024",
+    "filing_date": "19-04-2024",
+    "registration_number": "OS/152/2024",
+    "registration_date": "19-04-2024",
+    "cnr_number": "TSNZ0A0017822024",
+    "case_status": "Pending",
+    "first_hearing_date": "19-04-2024",
+    "decision_date": null,
+    "nature_of_disposal": null,
+    "last_order": "For cross-examination of PW-1",
+    "case_transferred_to_establishment": null,
+    "transfer_date": null,
+    "under_acts": [
+      {
+        "act": "CODE OF CIVIL PROCEDURE",
+        "sections": [
+          "26",
+          "151"
+        ]
+      }
+    ],
+    "petitioners": [
+      {
+        "name": "Gandla Raghavendra",
+        "advocate": "P. Prakash ADV"
+      }
+    ],
+    "respondents": [
+      {
+        "name": "Chilukuri Padma"
+      },
+      {
+        "name": "Chilukuri Venkatesh"
+      }
+    ],
+    "case_history": [
+      {
+        "business_date": "19-04-2024",
+        "next_hearing_date": "24-05-2024"
+      },
+      {
+        "business_date": "24-05-2024",
+        "next_hearing_date": "12-07-2024"
+      },
+      {
+        "business_date": "12-07-2024",
+        "next_hearing_date": "30-08-2024"
+      },
+      {
+        "business_date": "30-08-2024",
+        "next_hearing_date": "18-10-2024"
+      },
+      {
+        "business_date": "18-10-2024",
+        "next_hearing_date": "13-12-2024"
+      }
+    ]
+  },
+  {
+    "case_id": 9,
+    "state": "Telangana",
+    "district": "Warangal",
+    "court_complex": "Warangal, District Court Complex",
+    "establishment": "Junior Civil Judge Court, Warangal",
+    "court_number": "2",
+    "court_name": "Junior Civil Judge-cum-Judicial Magistrate of First Class, Warangal",
+    "case_type": "OS - ORIGINAL SUIT",
+    "case_number": "OS/84/2022",
+    "case_year": 2022,
+    "filing_number": "OS/109/2022",
+    "filing_date": "16-03-2022",
+    "registration_number": "OS/84/2022",
+    "registration_date": "16-03-2022",
+    "cnr_number": "TSWR0A0010842022",
+    "case_status": "Case disposed",
+    "first_hearing_date": "16-03-2022",
+    "decision_date": "12-09-2024",
+    "nature_of_disposal": "Dismissed for default",
+    "last_order": "Suit dismissed for default",
+    "case_transferred_to_establishment": null,
+    "transfer_date": null,
+    "under_acts": [
+      {
+        "act": "CODE OF CIVIL PROCEDURE",
+        "sections": [
+          "26",
+          "151"
+        ]
+      }
+    ],
+    "petitioners": [
+      {
+        "name": "Nalla Prabhakar",
+        "advocate": "G. Srikanth ADV"
+      }
+    ],
+    "respondents": [
+      {
+        "name": "Muppidi Saraswathi"
+      }
+    ],
+    "case_history": [
+      {
+        "business_date": "16-03-2022",
+        "next_hearing_date": "21-04-2022"
+      },
+      {
+        "business_date": "21-04-2022",
+        "next_hearing_date": "09-06-2022"
+      },
+      {
+        "business_date": "09-06-2022",
+        "next_hearing_date": "17-08-2023"
+      },
+      {
+        "business_date": "17-08-2023",
+        "next_hearing_date": "12-09-2024"
+      },
+      {
+        "business_date": "12-09-2024",
+        "next_hearing_date": null
+      }
+    ]
+  },
+  {
+    "case_id": 10,
+    "state": "Telangana",
+    "district": "Karimnagar",
+    "court_complex": "Karimnagar, District Court Complex",
+    "establishment": "Senior Civil Judge Court, Karimnagar",
+    "court_number": "2",
+    "court_name": "Senior Civil Judge, Karimnagar",
+    "case_type": "OS - ORIGINAL SUIT",
+    "case_number": "OS/315/2023",
+    "case_year": 2023,
+    "filing_number": "OS/352/2023",
+    "filing_date": "07-09-2023",
+    "registration_number": "OS/315/2023",
+    "registration_date": "07-09-2023",
+    "cnr_number": "TSKR0A0013152023",
+    "case_status": "Pending",
+    "first_hearing_date": "07-09-2023",
+    "decision_date": null,
+    "nature_of_disposal": null,
+    "last_order": "For arguments",
+    "case_transferred_to_establishment": null,
+    "transfer_date": null,
+    "under_acts": [
+      {
+        "act": "CODE OF CIVIL PROCEDURE",
+        "sections": [
+          "26",
+          "151"
+        ]
+      }
+    ],
+    "petitioners": [
+      {
+        "name": "Mekala Srinivas",
+        "advocate": "N. Rajender ADV"
+      }
+    ],
+    "respondents": [
+      {
+        "name": "Jupally Kavitha"
+      },
+      {
+        "name": "Jupally Mahesh"
+      }
+    ],
+    "case_history": [
+      {
+        "business_date": "07-09-2023",
+        "next_hearing_date": "16-10-2023"
+      },
+      {
+        "business_date": "16-10-2023",
+        "next_hearing_date": "11-12-2023"
+      },
+      {
+        "business_date": "11-12-2023",
+        "next_hearing_date": "19-02-2024"
+      },
+      {
+        "business_date": "19-02-2024",
+        "next_hearing_date": "15-04-2024"
+      },
+      {
+        "business_date": "15-04-2024",
+        "next_hearing_date": "10-06-2024"
+      }
+    ]
+  }
+]

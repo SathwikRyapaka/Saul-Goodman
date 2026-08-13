@@ -1,29 +1,49 @@
 const mongoose = require('mongoose');
 
 const caseSchema = new mongoose.Schema({
-  id: { type: String, required: true },
-  caseNumber: { type: String, required: true },
-  type: { type: String, required: true },
-  court: { type: String, required: true },
-  category: { type: String, required: true },
-  petitioner: { type: String, required: true },
-  respondent: { type: String, required: true },
-  filedDate: { type: String, required: true },
-  status: { type: String, required: true },
-  currentStage: { type: String, required: true },
-  nextHearing: { type: String, required: true },
-  priority: { type: String, default: 'normal' },
-  aiSummary: { type: String },
-  lawyerNotes: { type: String },
-  documents: [{
-    id: String,
-    name: String,
-    type: String,
-    date: String,
-    status: String,
-    uploadedBy: String
+  case_id: { type: Number, required: true, unique: true },
+  state: { type: String },
+  district: { type: String },
+  court_complex: { type: String },
+  establishment: { type: String },
+  court_number: { type: String },
+  court_name: { type: String },
+  case_type: { type: String },
+  case_number: { type: String, required: true, unique: true },
+  case_year: { type: Number },
+  filing_number: { type: String },
+  filing_date: { type: String },
+  registration_number: { type: String },
+  registration_date: { type: String },
+  cnr_number: { type: String, required: true, unique: true },
+  case_status: { type: String },
+  first_hearing_date: { type: String },
+  decision_date: { type: String, default: null },
+  nature_of_disposal: { type: String, default: null },
+  last_order: { type: String },
+  case_transferred_to_establishment: { type: String, default: null },
+  transfer_date: { type: String, default: null },
+  under_acts: [{
+    act: { type: String },
+    sections: [{ type: String }]
   }],
-  events: [String]
-}, { timestamps: true });
+  petitioners: [{
+    name: { type: String },
+    advocate: { type: String }
+  }],
+  respondents: [{
+    name: { type: String }
+  }],
+  case_history: [{
+    business_date: { type: String },
+    next_hearing_date: { type: String }
+  }]
+}, {
+  timestamps: true
+});
+
+caseSchema.index({ case_number: 1 });
+caseSchema.index({ cnr_number: 1 });
+caseSchema.index({ registration_number: 1 });
 
 module.exports = mongoose.model('Case', caseSchema);

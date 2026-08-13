@@ -19,6 +19,8 @@ import AIExplanation from './pages/AIExplanation';
 import VoiceAssistant from './pages/VoiceAssistant';
 import Hearings from './pages/Hearings';
 import LegalServices from './pages/LegalServices';
+import LegalServiceDetail from './pages/LegalServiceDetail';
+import LegalAuthorityFinder from './pages/LegalAuthorityFinder';
 import Notifications from './pages/Notifications';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
@@ -44,6 +46,8 @@ const App = () => {
               <Route path="/voice" element={<VoiceAssistant />} />
               <Route path="/hearings" element={<Hearings />} />
               <Route path="/legal-services" element={<LegalServices />} />
+              <Route path="/legal-services/authority" element={<LegalAuthorityFinder />} />
+              <Route path="/legal-services/:serviceType" element={<LegalServiceDetail />} />
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/settings" element={<Settings />} />

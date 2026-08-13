@@ -16,38 +16,44 @@ export const getDashboardStats = async () => {
 };
 
 export const getCases = async () => {
-  // Placeholder for GET /api/cases
-  await delay(500);
-  return mockCases;
+  // We aren't implementing GET all cases as per requirements, but keeping signature
+  return [];
 };
 
 export const getCaseById = async (id) => {
-  // Placeholder for GET /api/cases/:id
-  await delay(500);
-  return mockCases.find(c => c.id === id) || null;
+  try {
+    const response = await api.get(`/cases/${id}`);
+    if (response.data.success) {
+      return response.data.case;
+    }
+    return null;
+  } catch (error) {
+    console.error("Error fetching case details:", error);
+    return null;
+  }
 };
 
 export const searchCases = async (query) => {
-  // Placeholder for GET /api/cases/search?q=
-  await delay(500);
-  if (!query) return mockCases;
-  const lowerQ = query.toLowerCase();
-  return mockCases.filter(c => 
-    c.cnrNumber.toLowerCase().includes(lowerQ) ||
-    c.caseNumber.toLowerCase().includes(lowerQ) ||
-    c.petitioner.toLowerCase().includes(lowerQ) ||
-    c.respondent.toLowerCase().includes(lowerQ)
-  );
+  try {
+    const response = await api.get(`/cases/search?q=${encodeURIComponent(query)}`);
+    if (response.data.success) {
+      return response.data.cases;
+    }
+    return [];
+  } catch (error) {
+    console.error("Error searching cases:", error);
+    return [];
+  }
 };
 
 export const getCaseTimeline = async (id) => {
-  // Placeholder for GET /api/cases/:id/timeline
+  // Since we fetch the full case by ID and it contains case_history, we will just pass the case_history into this or handle it in CaseDetails.
+  // Leaving this stubbed to not break the UI if it relies on it.
   await delay(500);
-  return mockTimeline[id] || [];
+  return [];
 };
 
 export const getCaseProceedings = async (id) => {
-  // Placeholder for GET /api/cases/:id/proceedings
   await delay(500);
-  return mockProceedings[id] || [];
+  return [];
 };

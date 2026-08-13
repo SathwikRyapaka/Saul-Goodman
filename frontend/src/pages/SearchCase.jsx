@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { searchCases } from '../services/caseService';
@@ -13,6 +13,7 @@ const SearchCase = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
+  const [error, setError] = useState(null);
   const { t } = useLanguage();
   const navigate = useNavigate();
 
@@ -21,79 +22,102 @@ const SearchCase = () => {
     if (!query.trim()) return;
     setLoading(true);
     setSearched(true);
-    const data = await searchCases(query);
-    setResults(data);
-    setLoading(false);
+    setError(null);
+    try {
+      const data = await searchCases(query);
+      setResults(data);
+    } catch (err) {
+      setError("An error occurred while searching. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-white">{t('searchCase')}</h1>
+      <div>
+        <h1 className="text-2xl font-bold text-white mb-2">Search Court Cases</h1>
+        <p className="text-slate-400">Search using Case Number, CNR Number, or party name</p>
+      </div>
 
       <Card>
         <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
             <Input 
               icon={Search}
-              placeholder={t('searchPlaceholder')}
+              placeholder="e.g. OS/118/2024 or TSME0A0018422024"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
           <Button type="submit" disabled={loading} className="px-8">
-            {loading ? 'Searching...' : t('searchCase')}
+            {loading ? 'Searching...' : 'Search'}
           </Button>
         </form>
       </Card>
 
-      {searched && !loading && results.length === 0 && (
+      {error && (
+        <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-500 text-sm">
+          {error}
+        </div>
+      )}
+
+      {searched && !loading && results.length === 0 && !error && (
         <div className="text-center py-12">
           <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-4">
             <Search className="text-slate-400" size={24} />
           </div>
-          <h3 className="text-lg font-medium text-white">{t('noResults')}</h3>
-          <p className="text-slate-500 mt-1">Try searching with a different CNR or case number.</p>
+          <h3 className="text-lg font-medium text-white">No case found</h3>
+          <p className="text-slate-500 mt-1">Please check the Case Number or CNR Number and try again.</p>
         </div>
       )}
 
       {results.length > 0 && (
         <div className="space-y-4">
           <h3 className="font-medium text-slate-300">Search Results ({results.length})</h3>
-          {results.map(caseItem => (
-            <Card 
-              key={caseItem.id} 
-              className="cursor-pointer hover:border-amber-500/50 transition-colors group"
-              onClick={() => navigate(`/cases/${caseItem.id}`)}
-            >
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                  <h4 className="font-bold text-lg text-amber-400 group-hover:text-amber-400">{caseItem.caseNumber}</h4>
-                  <p className="text-sm text-slate-500 font-mono mt-1">CNR: {caseItem.cnrNumber}</p>
+          {results.map(caseItem => {
+            const petitioner = caseItem.petitioners && caseItem.petitioners.length > 0 ? caseItem.petitioners[0].name : "Unknown";
+            const respondent = caseItem.respondents && caseItem.respondents.length > 0 ? caseItem.respondents[0].name : "Unknown";
+            
+            return (
+              <Card 
+                key={caseItem._id} 
+                className="cursor-pointer hover:border-amber-500/50 transition-colors group"
+                onClick={() => navigate(`/cases/${caseItem._id}`)}
+              >
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                  <div>
+                    <h4 className="font-bold text-lg text-amber-400 group-hover:text-amber-400">{caseItem.case_number}</h4>
+                    <p className="text-sm text-slate-500 font-mono mt-1">CNR: {caseItem.cnr_number}</p>
+                  </div>
+                  <Badge status={caseItem.case_status === 'Pending' ? 'warning' : 'success'}>
+                    {caseItem.case_status}
+                  </Badge>
                 </div>
-                <Badge status={caseItem.status === 'Pending' ? 'warning' : 'success'}>
-                  {caseItem.status}
-                </Badge>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 pt-4 border-t border-slate-100 text-sm">
-                <div>
-                  <span className="block text-slate-400 text-xs uppercase mb-1">{t('court')}</span>
-                  <span className="font-medium text-slate-200">{caseItem.court}</span>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 pt-4 border-t border-slate-100 text-sm">
+                  <div>
+                    <span className="block text-slate-400 text-xs uppercase mb-1">{t('court')}</span>
+                    <span className="font-medium text-slate-200">{caseItem.court_name}</span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-xs uppercase mb-1">{t('category')}</span>
+                    <span className="font-medium text-slate-200">{caseItem.case_type}</span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-xs uppercase mb-1">{t('petitioner')}</span>
+                    <span className="font-medium text-slate-200">{petitioner}</span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-xs uppercase mb-1">{t('respondent')}</span>
+                    <span className="font-medium text-slate-200">{respondent}</span>
+                  </div>
                 </div>
-                <div>
-                  <span className="block text-slate-400 text-xs uppercase mb-1">{t('category')}</span>
-                  <span className="font-medium text-slate-200">{caseItem.category}</span>
+                <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end">
+                  <Button variant="outline" className="text-sm bg-white/5 border-amber-500/30 text-amber-400 hover:bg-amber-500/10">View Case Details</Button>
                 </div>
-                <div>
-                  <span className="block text-slate-400 text-xs uppercase mb-1">{t('currentStage')}</span>
-                  <span className="font-medium text-slate-200">{caseItem.currentStage}</span>
-                </div>
-                <div>
-                  <span className="block text-slate-400 text-xs uppercase mb-1">{t('nextHearing')}</span>
-                  <span className="font-medium text-slate-200">{new Date(caseItem.nextHearing).toLocaleDateString()}</span>
-                </div>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            )
+          })}
         </div>
       )}
     </div>

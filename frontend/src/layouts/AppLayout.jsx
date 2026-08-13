@@ -28,7 +28,6 @@ export const AppLayout = () => {
     { name: t('voiceAssistant'), icon: Mic, path: '/voice' },
     { name: t('hearingsReminders'), icon: Calendar, path: '/hearings' },
     { name: t('legalServices'), icon: Shield, path: '/legal-services' },
-    { name: t('notifications'), icon: Bell, path: '/notifications' },
     { name: t('profile'), icon: User, path: '/profile' },
     { name: t('settings'), icon: Settings, path: '/settings' },
   ];
@@ -135,10 +134,6 @@ export const AppLayout = () => {
           </div>
 
           <div className="flex items-center gap-3 sm:gap-5">
-            <button className="relative text-slate-400 hover:text-white transition-colors" onClick={() => navigate('/notifications')}>
-              <Bell size={20} />
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white">3</span>
-            </button>
             <div className="h-8 w-px bg-white/10 hidden sm:block"></div>
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/profile')}>
               <div className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold border border-amber-500/30">
