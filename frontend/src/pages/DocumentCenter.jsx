@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { UploadCloud, FileText, Search, File, Download, BrainCircuit, Loader2 } from 'lucide-react';
 import { getDocuments, uploadDocument, summarizeDocument } from '../services/documentService';
 import { useLanguage } from '../context/LanguageContext';
@@ -14,16 +14,40 @@ const DocumentCenter = () => {
   const [summaryData, setSummaryData] = useState(null);
   const { t, language } = useLanguage();
 
+  const fileInputRef = useRef(null);
+
   useEffect(() => {
     getDocuments().then(setDocuments);
   }, []);
 
-  const handleUpload = async (e) => {
-    e.preventDefault();
+  const handleUploadClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
     setUploading(true);
-    await uploadDocument();
+    await uploadDocument(file);
+    
+    // Mock adding the new document to the list
+    const newDoc = {
+      id: Date.now().toString(),
+      name: file.name,
+      type: 'Uploaded Document',
+      caseNumber: 'N/A',
+      date: new Date().toISOString(),
+      format: file.name.split('.').pop().toUpperCase() || 'FILE'
+    };
+    
+    setDocuments(prev => [newDoc, ...prev]);
     setUploading(false);
-    // In a real app, refresh documents list
+    
+    // Reset input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const handleSummarize = async (id) => {
@@ -175,11 +199,24 @@ const DocumentCenter = () => {
           <Card className="sticky top-6">
             <h3 className="font-semibold text-lg text-white mb-4">Upload Document</h3>
             
-            <div className="border-2 border-dashed border-white/20 rounded-xl p-8 text-center bg-white/5 hover:bg-white/5 transition-colors cursor-pointer mb-4">
+            <div 
+              className="border-2 border-dashed border-white/20 rounded-xl p-8 text-center bg-white/5 hover:bg-white/5 transition-colors cursor-pointer mb-4"
+              onClick={handleUploadClick}
+            >
+              <input 
+                type="file" 
+                ref={fileInputRef} 
+                className="hidden" 
+                onChange={handleFileChange}
+                accept=".pdf,.doc,.docx,.jpg,.png"
+              />
               <UploadCloud className="mx-auto text-amber-400 mb-3" size={32} />
               <p className="font-medium text-slate-300 mb-1">Drag & Drop your document here</p>
               <p className="text-sm text-slate-500 mb-4">or</p>
-              <Button variant="secondary" size="sm" onClick={handleUpload} disabled={uploading}>
+              <Button variant="secondary" size="sm" onClick={(e) => {
+                e.stopPropagation();
+                handleUploadClick();
+              }} disabled={uploading}>
                 {uploading ? 'Uploading...' : 'Browse Files'}
               </Button>
             </div>
