@@ -1,3 +1,5 @@
+import api from './api';
+
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 export const explainCase = async (caseId, language = 'en') => {
@@ -14,12 +16,11 @@ export const explainCase = async (caseId, language = 'en') => {
 };
 
 export const processVoiceQuery = async (query) => {
-  // Placeholder for POST /api/ai/voice
-  await delay(1000);
-  if (query.toLowerCase().includes('hearing')) {
-    return "Your next hearing is on 20 August 2026 for case OS/101/2025.";
-  } else if (query.toLowerCase().includes('explain')) {
-    return "Your case is currently at the Evidence stage. You need to submit your documents.";
+  try {
+    const response = await api.post('/ai/voice', { query });
+    return response.data.response;
+  } catch (error) {
+    console.error('AI Service Error:', error);
+    return "I am sorry, there was a problem connecting to the AI server. Please try again.";
   }
-  return "I found 3 active cases for you. Would you like me to read them out?";
 };

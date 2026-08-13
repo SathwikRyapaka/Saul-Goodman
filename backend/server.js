@@ -17,7 +17,9 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Routes
 const caseRoutes = require('./routes/caseRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 app.use('/api/cases', caseRoutes);
+app.use('/api/ai', aiRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'API is running' });
