@@ -47,19 +47,15 @@ const DocumentCenter = () => {
 
     setFile(selectedFile);
     setErrorMsg('');
-    setStatus('uploading');
+    setStatus('processing');
+    setProcessStep(0);
 
     try {
-      // 1. Upload to backend
+      // 1. Upload and process entirely on the backend
       const res = await uploadDocument(selectedFile);
       if (!res.documentId) throw new Error("Upload failed.");
       
-      setStatus('processing');
-      setProcessStep(0);
-
-      // 2. The backend orchestrates parsing & Gemini completely asynchronously or synchronously during the upload request.
-      // Since our uploadAndProcess controller blocks until complete, the above `uploadDocument` call actually waits for the whole flow!
-      // But in case we refactor to pure async, we would poll here. We will just fetch the summary immediately.
+      // 2. Fetch the completed summary
       const summary = await getDocumentSummary(res.documentId);
       
       if (summary.processingStatus === 'failed') {

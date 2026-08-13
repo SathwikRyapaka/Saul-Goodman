@@ -12,7 +12,7 @@ exports.processVoiceQuery = async (req, res) => {
     }
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const systemPrompt = `You are 'Nyaya Setu', an expert legal AI assistant designed to help citizens understand their legal cases. 
     Keep your answers highly concise, empathetic, and professional, as they will be read aloud via text-to-speech.
@@ -39,7 +39,7 @@ exports.summarizeDocument = async (req, res) => {
     }
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `Analyze this legal document named "${fileName}". Provide a highly structured JSON response with the following keys exactly:
     - "documentType": A short classification of the document (e.g. "Court Order", "Petition", "Affidavit").
