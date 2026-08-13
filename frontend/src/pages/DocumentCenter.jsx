@@ -38,7 +38,8 @@ const DocumentCenter = () => {
       type: 'Uploaded Document',
       caseNumber: 'N/A',
       date: new Date().toISOString(),
-      format: file.name.split('.').pop().toUpperCase() || 'FILE'
+      format: file.name.split('.').pop().toUpperCase() || 'FILE',
+      file: file // Store the actual file for downloading/viewing
     };
     
     setDocuments(prev => [newDoc, ...prev]);
@@ -55,6 +56,39 @@ const DocumentCenter = () => {
     const data = await summarizeDocument(id);
     setSummaryData(data);
     setSummarizingId(null);
+  };
+
+  const handleDownload = (doc) => {
+    if (doc.file) {
+      const url = URL.createObjectURL(doc.file);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = doc.name;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } else {
+      const content = `Mock content for ${doc.name}\nType: ${doc.type}\nCase: ${doc.caseNumber}\nDate: ${new Date(doc.date).toLocaleDateString()}`;
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${doc.name}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  };
+
+  const handleView = (doc) => {
+    if (doc.file) {
+      const url = URL.createObjectURL(doc.file);
+      window.open(url, '_blank');
+    } else {
+      alert(`Viewing document details:\n\nName: ${doc.name}\nType: ${doc.type}\nCase Number: ${doc.caseNumber}`);
+    }
   };
 
   if (summaryData) {
@@ -171,10 +205,10 @@ const DocumentCenter = () => {
                 </div>
                 
                 <div className="flex items-center gap-2 w-full sm:w-auto mt-4 sm:mt-0 pt-4 sm:pt-0 border-t sm:border-0 border-slate-100">
-                  <Button variant="ghost" className="px-2" title={t('view')}>
+                  <Button variant="ghost" className="px-2" title={t('view')} onClick={() => handleView(doc)}>
                     <File size={18} />
                   </Button>
-                  <Button variant="ghost" className="px-2" title={t('download')}>
+                  <Button variant="ghost" className="px-2" title={t('download')} onClick={() => handleDownload(doc)}>
                     <Download size={18} />
                   </Button>
                   <Button 
