@@ -13,18 +13,28 @@ export const uploadDocument = async (file) => {
   return { success: true, message: "Document uploaded successfully", docId: Date.now() };
 };
 
-export const summarizeDocument = async (id) => {
+export const summarizeDocument = async (doc) => {
   // Placeholder for POST /api/documents/:id/summarize
   await delay(2000);
+  
+  const docName = doc?.name || "Document";
+  const docType = doc?.type || "Legal Document";
+  const caseNum = doc?.caseNumber || "N/A";
+  const dateStr = doc?.date ? new Date(doc.date).toLocaleDateString() : new Date().toLocaleDateString();
+
   return {
-    documentType: "Court Order",
-    caseNumber: "OS/101/2025",
-    orderDate: "01 Aug 2026",
-    currentStage: "Evidence",
-    summary: "The court has reviewed the initial filings. It is ordered that the evidence be collected.",
-    importantEvents: ["Notices issued", "Evidence scheduled"],
-    importantDates: ["01 Aug 2026 - Order Issued"],
-    keyPoints: ["Respondent must appear for next hearing"],
-    nextListedProceeding: "Evidence Collection on 20 Aug 2026"
+    documentType: docType,
+    caseNumber: caseNum,
+    orderDate: dateStr,
+    currentStage: "Review",
+    summary: `This is an AI-generated summary for the document "${docName}". This document appears to be related to your case proceedings. Based on a quick analysis, it outlines key facts and statements that will be relevant for your upcoming hearings. Please ensure you maintain a physical copy of this for your records.`,
+    importantEvents: ["Document submitted for AI Review", "Ready for court reference"],
+    importantDates: [`${dateStr} - Document Processed`],
+    keyPoints: [
+      `Main subject pertains to ${docName}`,
+      "Ensure all original copies are preserved.",
+      "Consult with your legal counsel regarding these facts."
+    ],
+    nextListedProceeding: "Pending review by counsel"
   };
 };

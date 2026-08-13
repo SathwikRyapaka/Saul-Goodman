@@ -51,9 +51,9 @@ const DocumentCenter = () => {
     }
   };
 
-  const handleSummarize = async (id) => {
-    setSummarizingId(id);
-    const data = await summarizeDocument(id);
+  const handleSummarize = async (doc) => {
+    setSummarizingId(doc.id);
+    const data = await summarizeDocument(doc);
     setSummaryData(data);
     setSummarizingId(null);
   };
@@ -214,7 +214,7 @@ const DocumentCenter = () => {
                   <Button 
                     variant="outline" 
                     className="flex-1 sm:flex-none text-sm bg-amber-500/20 text-amber-400 border-amber-500/30 hover:bg-amber-500/20"
-                    onClick={() => handleSummarize(doc.id)}
+                    onClick={() => handleSummarize(doc)}
                     disabled={summarizingId === doc.id}
                   >
                     {summarizingId === doc.id ? (
