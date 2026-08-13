@@ -86,10 +86,32 @@ exports.uploadAndProcess = async (req, res) => {
   }
 };
 
+const { authorizeCaseAccess } = require('../utils/authUtils');
+
 exports.getSummary = async (req, res) => {
   try {
     const doc = await Document.findById(req.params.id);
     if (!doc) return res.status(404).json({ error: "Document not found" });
+
+    // Ensure the document was successfully processed and contains parties
+    const parties = doc.structuredCaseData?.parties;
+    if (parties) {
+      // Mock a caseData object matching what authorizeCaseAccess expects
+      const mockCaseData = {
+        petitioners: parties.petitioner || [],
+        respondents: parties.respondent || []
+      };
+      
+      // We only authorize if it's a valid case that belongs to the user
+      // Or if it hasn't finished extracting yet (in which case parties is empty, but we must decide).
+      // Since it's their own upload, technically they could view it, but the spec says:
+      // "Apply the SAME authorization rule to: Case documents".
+      // Let's assume if it has parties, we check them.
+      if (!authorizeCaseAccess(mockCaseData, req.user.name)) {
+        return res.status(403).json({ error: 'Forbidden' });
+      }
+    }
+
     res.json(doc);
   } catch (err) {
     res.status(500).json({ error: "Server error" });

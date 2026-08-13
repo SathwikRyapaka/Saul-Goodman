@@ -1,5 +1,6 @@
 const MyCase = require('../models/MyCase');
 const Case = require('../models/Case');
+const { authorizeCaseAccess } = require('../utils/authUtils');
 
 // @desc    Add case to My Cases
 // @route   POST /api/my-cases
@@ -17,6 +18,11 @@ const addCase = async (req, res) => {
     const existingCase = await Case.findById(case_id);
     if (!existingCase) {
       return res.status(404).json({ success: false, message: 'Case not found in database' });
+    }
+
+    // AUTHORIZATION: Ensure the user is actually a party to this case
+    if (!authorizeCaseAccess(existingCase, req.user.name)) {
+      return res.status(403).json({ success: false, message: 'Forbidden' });
     }
 
     // Check if it's already saved by this user

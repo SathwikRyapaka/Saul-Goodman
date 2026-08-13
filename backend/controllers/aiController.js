@@ -84,6 +84,7 @@ exports.summarizeDocument = async (req, res) => {
 
 const Case = require('../models/Case');
 const mongoose = require('mongoose');
+const { authorizeCaseAccess } = require('../utils/authUtils');
 
 exports.explainMongoDB_Case = async (req, res) => {
   try {
@@ -96,6 +97,10 @@ exports.explainMongoDB_Case = async (req, res) => {
     const caseData = await Case.findById(id);
     if (!caseData) {
       return res.status(404).json({ success: false, message: 'Case not found' });
+    }
+
+    if (!authorizeCaseAccess(caseData, req.user.name)) {
+      return res.status(403).json({ success: false, message: 'Forbidden' });
     }
 
     if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === 'YOUR_API_KEY_HERE') {
