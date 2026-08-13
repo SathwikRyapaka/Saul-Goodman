@@ -1,29 +1,36 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Lock, Mail, ShieldCheck, Scale } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Lock, Mail, User, ShieldCheck, Scale } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-
 import ladyJusticeImg from '../assets/lady-justice.jpg';
 
-export default function LoginPage() {
+export default function RegisterPage() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { register } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+    
     setError('');
+    setIsSubmitting(true);
     
     try {
-      await login(email, password);
+      await register(name, email, password);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.message || 'Login failed');
+      setError(err.message || 'Registration failed');
     } finally {
       setIsSubmitting(false);
     }
@@ -32,17 +39,16 @@ export default function LoginPage() {
   return (
     <div className="relative min-h-screen w-full flex flex-col items-center justify-between px-6 py-10 bg-[#07090e] overflow-hidden select-none dark-scrollbar">
       
-      {/* ================= BACKGROUND AMBIENT LAYER ================= */}
+      {/* BACKGROUND AMBIENT LAYER */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div 
           className="absolute -inset-20 bg-cover bg-center filter blur-[110px] brightness-[0.35] saturate-[0.6] opacity-70 scale-110 transition-all duration-1000"
           style={{ backgroundImage: `url(${ladyJusticeImg})` }}
         />
-        {/* Dark Vignette Overlay */}
         <div className="absolute inset-0 vignette-overlay" />
       </div>
 
-      {/* ================= TOP HEADER ================= */}
+      {/* TOP HEADER */}
       <header className="relative z-10 w-full max-w-7xl flex justify-between items-center text-xs tracking-tighter uppercase text-white font-sans font-extrabold leading-[0.95]">
         <button
           onClick={() => navigate('/')}
@@ -58,10 +64,9 @@ export default function LoginPage() {
         </div>
       </header>
 
-      {/* ================= LOGIN FORM CONTAINER ================= */}
+      {/* REGISTER FORM CONTAINER */}
       <main className="relative z-10 w-full max-w-md flex flex-col items-center justify-center my-auto py-8">
         
-        {/* Header Title */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,15 +76,14 @@ export default function LoginPage() {
           <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mx-auto mb-4">
             <Scale className="w-6 h-6 text-amber-400" />
           </div>
-          <h2 className="font-sans text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tighter leading-[0.95]">
-            LOGIN
+          <h2 className="font-sans text-4xl sm:text-5xl font-black text-white tracking-tighter leading-[0.95]">
+            CREATE ACCOUNT
           </h2>
           <p className="text-xs text-white/90 font-extrabold uppercase tracking-tighter leading-[0.95] mt-3 font-sans">
-            Telangana Judiciary Intelligence Layer
+            Citizen Registration Portal
           </p>
         </motion.div>
 
-        {/* LOGIN CARD */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.96, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -94,12 +98,30 @@ export default function LoginPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-4">
             
-            {/* Email Input / Username */}
+            {/* Full Name Input */}
             <div className="space-y-1.5">
               <label className="text-xs font-black uppercase tracking-tighter leading-[0.95] text-white block font-sans">
-                Email Address / Username
+                Full Name
+              </label>
+              <div className="relative flex items-center">
+                <User className="absolute left-4 w-4 h-4 text-gray-500" />
+                <input 
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Citizen Name"
+                  className="w-full bg-black/50 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white font-bold tracking-tighter leading-[0.95] placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors font-sans"
+                />
+              </div>
+            </div>
+
+            {/* Email Input */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-black uppercase tracking-tighter leading-[0.95] text-white block font-sans">
+                Email Address
               </label>
               <div className="relative flex items-center">
                 <Mail className="absolute left-4 w-4 h-4 text-gray-500" />
@@ -109,7 +131,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="citizen@domain.com"
-                  className="w-full bg-black/50 border border-white/10 rounded-xl py-3.5 pl-11 pr-4 text-sm text-white font-bold tracking-tighter leading-[0.95] placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors font-sans"
+                  className="w-full bg-black/50 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white font-bold tracking-tighter leading-[0.95] placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors font-sans"
                 />
               </div>
             </div>
@@ -124,25 +146,43 @@ export default function LoginPage() {
                 <input 
                   type="password"
                   required
+                  minLength={6}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••"
-                  className="w-full bg-black/50 border border-white/10 rounded-xl py-3.5 pl-11 pr-4 text-sm text-white font-bold tracking-tighter leading-[0.95] placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors font-sans"
+                  className="w-full bg-black/50 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white font-bold tracking-tighter leading-[0.95] placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors font-sans"
                 />
               </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Confirm Password Input */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-black uppercase tracking-tighter leading-[0.95] text-white block font-sans">
+                Confirm Password
+              </label>
+              <div className="relative flex items-center">
+                <Lock className="absolute left-4 w-4 h-4 text-gray-500" />
+                <input 
+                  type="password"
+                  required
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="••••••••••••"
+                  className="w-full bg-black/50 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white font-bold tracking-tighter leading-[0.95] placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors font-sans"
+                />
+              </div>
+            </div>
+
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full mt-2 py-3.5 px-6 rounded-xl bg-white text-black font-black text-sm tracking-tighter leading-[0.95] hover:bg-gray-200 transition-all flex items-center justify-center gap-2 group disabled:opacity-50 cursor-pointer shadow-lg shadow-black/50 font-sans uppercase"
+              className="w-full mt-4 py-3.5 px-6 rounded-xl bg-white text-black font-black text-sm tracking-tighter leading-[0.95] hover:bg-gray-200 transition-all flex items-center justify-center gap-2 group disabled:opacity-50 cursor-pointer shadow-lg shadow-black/50 font-sans uppercase"
             >
               {isSubmitting ? (
-                <span className="inline-block animate-pulse font-extrabold text-xs uppercase tracking-tighter leading-[0.95]">Authenticating...</span>
+                <span className="inline-block animate-pulse font-extrabold text-xs uppercase tracking-tighter leading-[0.95]">Registering...</span>
               ) : (
                 <>
-                  <span>Access Platform</span>
+                  <span>Create Account</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </>
               )}
@@ -150,16 +190,15 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 text-center text-sm font-sans font-medium text-gray-400">
-            Don't have an account?{' '}
-            <button onClick={() => navigate('/register')} className="text-amber-400 hover:text-amber-300 font-bold transition-colors">
-              Register
+            Already have an account?{' '}
+            <button onClick={() => navigate('/login')} className="text-amber-400 hover:text-amber-300 font-bold transition-colors">
+              Login
             </button>
           </div>
         </motion.div>
 
       </main>
 
-      {/* ================= FOOTER ================= */}
       <footer className="relative z-10 w-full max-w-7xl flex justify-between items-center text-[11px] text-slate-400 font-mono border-t border-white/10 pt-4">
         <span>Protected by eCourts Encrypted Auth Layer</span>
         <span>Demux Open Innovation</span>

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { searchCases } from '../services/caseService';
+import { addToMyCases, checkMyCasesStatus } from '../services/myCaseService';
 import { useLanguage } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
 import { Card } from '../components/Card';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
@@ -14,7 +16,11 @@ const SearchCase = () => {
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
   const [error, setError] = useState(null);
+  const [savedCases, setSavedCases] = useState({}); // { caseId: boolean }
+  const [savingId, setSavingId] = useState(null);
+  
   const { t } = useLanguage();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const handleSearch = async (e) => {
@@ -26,10 +32,38 @@ const SearchCase = () => {
     try {
       const data = await searchCases(query);
       setResults(data);
+      
+      if (isAuthenticated && data.length > 0) {
+        const ids = data.map(c => c._id);
+        const checkRes = await checkMyCasesStatus(ids);
+        if (checkRes.success) {
+          setSavedCases(checkRes.statuses);
+        }
+      }
     } catch (err) {
       setError("An error occurred while searching. Please try again.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleSaveToMyCases = async (e, caseId) => {
+    e.stopPropagation();
+    if (!isAuthenticated) {
+      navigate('/login');
+      return;
+    }
+    
+    setSavingId(caseId);
+    try {
+      await addToMyCases(caseId);
+      setSavedCases(prev => ({ ...prev, [caseId]: true }));
+      // Optional: Add toast notification here
+    } catch (err) {
+      console.error(err);
+      // Optional: Add error toast here
+    } finally {
+      setSavingId(null);
     }
   };
 
@@ -112,8 +146,29 @@ const SearchCase = () => {
                     <span className="font-medium text-slate-200">{respondent}</span>
                   </div>
                 </div>
-                <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end">
-                  <Button variant="outline" className="text-sm bg-white/5 border-amber-500/30 text-amber-400 hover:bg-amber-500/10">View Case Details</Button>
+                <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end gap-3 items-center">
+                  {isAuthenticated && (
+                    <Button 
+                      variant="outline" 
+                      className={`text-sm ${savedCases[caseItem._id] ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-white/5 border-slate-500/30 text-slate-300 hover:bg-slate-500/20'}`}
+                      disabled={savedCases[caseItem._id] || savingId === caseItem._id}
+                      onClick={(e) => handleSaveToMyCases(e, caseItem._id)}
+                    >
+                      {savingId === caseItem._id ? 'Saving...' : (savedCases[caseItem._id] ? '✓ Added to My Cases' : '+ Add to My Cases')}
+                    </Button>
+                  )}
+                  {!isAuthenticated && (
+                    <Button 
+                      variant="outline" 
+                      className="text-sm bg-white/5 border-slate-500/30 text-slate-300 hover:bg-slate-500/20"
+                      onClick={(e) => { e.stopPropagation(); navigate('/login'); }}
+                    >
+                      Login to Save
+                    </Button>
+                  )}
+                  <Button variant="outline" className="text-sm bg-amber-500/10 border-amber-500/30 text-amber-400 hover:bg-amber-500/20">
+                    View Case Details
+                  </Button>
                 </div>
               </Card>
             )
