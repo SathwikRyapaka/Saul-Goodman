@@ -31,6 +31,11 @@ const DocumentCenter = () => {
     setUploading(true);
     await uploadDocument(file);
     
+    let content = "";
+    if (file.name.endsWith('.txt') || file.name.endsWith('.md') || file.name.endsWith('.csv') || file.type.startsWith('text')) {
+      content = await file.text();
+    }
+    
     // Mock adding the new document to the list
     const newDoc = {
       id: Date.now().toString(),
@@ -39,7 +44,8 @@ const DocumentCenter = () => {
       caseNumber: 'N/A',
       date: new Date().toISOString(),
       format: file.name.split('.').pop().toUpperCase() || 'FILE',
-      file: file // Store the actual file for downloading/viewing
+      file: file,
+      content: content
     };
     
     setDocuments(prev => [newDoc, ...prev]);
