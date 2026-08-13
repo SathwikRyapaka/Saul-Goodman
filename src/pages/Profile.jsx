@@ -16,7 +16,7 @@ const Profile = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-1 space-y-6">
           <Card className="text-center p-8">
-            <div className="w-24 h-24 rounded-full bg-primary-100 border-4 border-white shadow-lg mx-auto flex items-center justify-center text-3xl font-bold text-primary-700 mb-4">
+            <div className="w-24 h-24 rounded-full bg-amber-500/20 border-4 border-white shadow-lg mx-auto flex items-center justify-center text-3xl font-bold text-amber-400 mb-4">
               {user?.name?.charAt(0) || 'U'}
             </div>
             <h2 className="text-xl font-bold text-white mb-1">{user?.name}</h2>
@@ -36,7 +36,7 @@ const Profile = () => {
           
           <Card className="p-4">
             <nav className="space-y-1">
-              <button className="w-full flex items-center gap-3 px-3 py-2 bg-primary-50 text-primary-700 rounded-lg font-medium text-sm">
+              <button className="w-full flex items-center gap-3 px-3 py-2 bg-amber-500/20 text-amber-400 rounded-lg font-medium text-sm">
                 <User size={18} /> Personal Info
               </button>
               <button className="w-full flex items-center gap-3 px-3 py-2 text-slate-400 hover:bg-white/5 rounded-lg font-medium text-sm transition-colors">

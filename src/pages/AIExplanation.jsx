@@ -41,15 +41,15 @@ const AIExplanation = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="text-center py-6">
-        <BrainCircuit size={48} className="mx-auto text-primary-600 mb-4" />
+        <BrainCircuit size={48} className="mx-auto text-amber-400 mb-4" />
         <h1 className="text-3xl font-bold text-white mb-2">{t('aiCaseExplanation')}</h1>
         <p className="text-slate-400 max-w-lg mx-auto">{t('aiExplanationSubtitle')}</p>
       </div>
 
-      <Card className="bg-primary-900 border-none">
+      <Card className="bg-amber-500/10 border-none">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
           <select 
-            className="flex-1 w-full bg-white/5 border-0 rounded-lg px-4 py-3 text-white outline-none focus:ring-2 focus:ring-primary-500"
+            className="flex-1 w-full bg-white/5 border-0 rounded-lg px-4 py-3 text-white outline-none focus:ring-2 focus:ring-amber-500"
             value={selectedCase}
             onChange={(e) => setSelectedCase(e.target.value)}
           >
@@ -58,7 +58,7 @@ const AIExplanation = () => {
             ))}
           </select>
           <Button 
-            className="w-full sm:w-auto px-8 py-3 bg-primary-600 hover:bg-primary-500"
+            className="w-full sm:w-auto px-8 py-3 bg-amber-500 hover:bg-amber-500"
             onClick={handleExplain}
             disabled={loading}
           >
@@ -72,13 +72,13 @@ const AIExplanation = () => {
           <div className="flex justify-between items-center">
             <div className="flex gap-2 bg-white/5 rounded-lg p-1 border border-white/10">
               <button 
-                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${language === 'en' ? 'bg-primary-50 text-primary-700' : 'text-slate-400 hover:bg-white/5'}`}
+                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${language === 'en' ? 'bg-amber-500/20 text-amber-400' : 'text-slate-400 hover:bg-white/5'}`}
                 onClick={() => language !== 'en' && toggleLanguage()}
               >
                 English
               </button>
               <button 
-                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${language === 'te' ? 'bg-primary-50 text-primary-700' : 'text-slate-400 hover:bg-white/5'}`}
+                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${language === 'te' ? 'bg-amber-500/20 text-amber-400' : 'text-slate-400 hover:bg-white/5'}`}
                 onClick={() => language !== 'te' && toggleLanguage()}
               >
                 తెలుగు
@@ -108,9 +108,9 @@ const AIExplanation = () => {
               <h3 className="text-lg font-bold text-orange-900 mb-3">{t('nextHearing')}</h3>
               <p className="text-orange-800 leading-relaxed font-medium">{explanation.nextHearing}</p>
             </Card>
-            <Card className="bg-primary-50 border-primary-100">
-              <h3 className="text-lg font-bold text-primary-900 mb-3">{t('importantPoints')}</h3>
-              <ul className="list-disc pl-5 space-y-2 text-primary-800">
+            <Card className="bg-amber-500/20 border-amber-500/30">
+              <h3 className="text-lg font-bold text-amber-400 mb-3">{t('importantPoints')}</h3>
+              <ul className="list-disc pl-5 space-y-2 text-amber-400">
                 {explanation.importantPoints.map((pt, i) => (
                   <li key={i}>{pt}</li>
                 ))}

@@ -8,7 +8,7 @@ export const Badge = ({ children, status = 'default', className }) => {
     warning: "bg-yellow-100 text-yellow-800",
     error: "bg-red-100 text-red-800",
     info: "bg-blue-100 text-blue-800",
-    primary: "bg-primary-100 text-primary-800"
+    primary: "bg-amber-500/20 text-amber-400"
   };
 
   return (

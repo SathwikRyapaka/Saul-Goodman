@@ -62,12 +62,12 @@ const SearchCase = () => {
           {results.map(caseItem => (
             <Card 
               key={caseItem.id} 
-              className="cursor-pointer hover:border-primary-300 transition-colors group"
+              className="cursor-pointer hover:border-amber-500/50 transition-colors group"
               onClick={() => navigate(`/cases/${caseItem.id}`)}
             >
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                  <h4 className="font-bold text-lg text-primary-700 group-hover:text-primary-800">{caseItem.caseNumber}</h4>
+                  <h4 className="font-bold text-lg text-amber-400 group-hover:text-amber-400">{caseItem.caseNumber}</h4>
                   <p className="text-sm text-slate-500 font-mono mt-1">CNR: {caseItem.cnrNumber}</p>
                 </div>
                 <Badge status={caseItem.status === 'Pending' ? 'warning' : 'success'}>

@@ -21,7 +21,7 @@ const TimelineTab = ({ caseId }) => {
           <div key={item.id} className="relative pl-8">
             <div className={`absolute -left-[11px] bg-white/5 p-1 rounded-full 
               ${item.status === 'completed' ? 'text-green-500' : 
-                item.status === 'current' ? 'text-primary-600' : 'text-slate-300'}`}
+                item.status === 'current' ? 'text-amber-400' : 'text-slate-300'}`}
             >
               {item.status === 'completed' ? <CheckCircle2 size={16} /> : 
                item.status === 'current' ? <Circle size={16} fill="currentColor" /> : 
@@ -58,7 +58,7 @@ const ProceedingsTab = ({ caseId }) => {
     <div className="space-y-4 py-2">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-slate-200">Recent Proceedings</h3>
-        <select className="border border-white/20 rounded-lg text-sm px-3 py-1.5 focus:ring-primary-500 focus:border-primary-500 outline-none">
+        <select className="border border-white/20 rounded-lg text-sm px-3 py-1.5 focus:ring-amber-500 focus:border-amber-500 outline-none">
           <option>Newest First</option>
           <option>Oldest First</option>
         </select>
@@ -68,7 +68,7 @@ const ProceedingsTab = ({ caseId }) => {
         <Card key={proc.id} className="hover:shadow-md transition-shadow">
           <div className="flex justify-between items-start mb-3">
             <div>
-              <span className="text-primary-700 font-semibold">{proc.stage}</span>
+              <span className="text-amber-400 font-semibold">{proc.stage}</span>
             </div>
             <span className="text-sm text-slate-500 flex items-center gap-1">
               <Clock size={14} /> {new Date(proc.date).toLocaleDateString()}
@@ -118,7 +118,7 @@ const CaseDetails = () => {
             </div>
           </div>
           <Button className="bg-white/5 text-white hover:bg-white/5" onClick={() => navigate('/ai-explain')}>
-            <BrainCircuit size={18} className="mr-2 text-primary-600" />
+            <BrainCircuit size={18} className="mr-2 text-amber-400" />
             {t('aiExplain')}
           </Button>
         </div>
@@ -135,7 +135,7 @@ const CaseDetails = () => {
                   onClick={() => setSearchParams({ tab: tItem.id })}
                   className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
                     tab === tItem.id
-                      ? 'border-primary-600 text-primary-600'
+                      ? 'border-amber-500 text-amber-400'
                       : 'border-transparent text-slate-500 hover:text-slate-300 hover:border-white/20'
                   }`}
                 >
@@ -162,7 +162,7 @@ const CaseDetails = () => {
                     </div>
                     <div>
                       <span className="block text-slate-500 mb-1">{t('currentStage')}</span>
-                      <span className="font-medium text-primary-700">{caseData.currentStage}</span>
+                      <span className="font-medium text-amber-400">{caseData.currentStage}</span>
                     </div>
                     <div className="col-span-2 sm:col-span-3 pt-4 border-t border-slate-100">
                       <span className="block text-slate-500 mb-1">{t('court')}</span>
@@ -201,10 +201,10 @@ const CaseDetails = () => {
             )}
 
             {tab === 'ai' && (
-              <div className="text-center py-12 bg-primary-50 rounded-xl border border-primary-100">
-                <BrainCircuit className="mx-auto text-primary-400 mb-4" size={48} />
-                <h3 className="text-lg font-medium text-primary-900 mb-2">AI Case Explanation</h3>
-                <p className="text-primary-700/80 mb-6 max-w-md mx-auto">Get a simple, easy-to-understand summary of your case status and what it means for you.</p>
+              <div className="text-center py-12 bg-amber-500/20 rounded-xl border border-amber-500/30">
+                <BrainCircuit className="mx-auto text-amber-400 mb-4" size={48} />
+                <h3 className="text-lg font-medium text-amber-400 mb-2">AI Case Explanation</h3>
+                <p className="text-amber-400/80 mb-6 max-w-md mx-auto">Get a simple, easy-to-understand summary of your case status and what it means for you.</p>
                 <Button onClick={() => navigate('/ai-explain')}>Generate Explanation</Button>
               </div>
             )}
@@ -213,9 +213,9 @@ const CaseDetails = () => {
 
         {/* Sidebar info */}
         <div className="space-y-6">
-          <Card className="bg-primary-50 border-primary-100">
-            <h3 className="font-semibold text-primary-900 mb-2">Next Hearing</h3>
-            <div className="flex items-center gap-3 text-primary-700 mb-4">
+          <Card className="bg-amber-500/20 border-amber-500/30">
+            <h3 className="font-semibold text-amber-400 mb-2">Next Hearing</h3>
+            <div className="flex items-center gap-3 text-amber-400 mb-4">
               <Calendar size={20} />
               <span className="text-lg font-bold">{new Date(caseData.nextHearing).toLocaleDateString()}</span>
             </div>

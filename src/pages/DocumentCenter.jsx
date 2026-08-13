@@ -80,12 +80,12 @@ const DocumentCenter = () => {
           </div>
 
           <div className="space-y-6">
-            <Card className="bg-primary-50 border-primary-100">
-              <h3 className="text-sm font-semibold text-primary-900 uppercase tracking-wider mb-3">Important Events</h3>
+            <Card className="bg-amber-500/20 border-amber-500/30">
+              <h3 className="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-3">Important Events</h3>
               <ul className="space-y-3">
                 {summaryData.importantEvents.map((evt, i) => (
-                  <li key={i} className="flex gap-2 text-sm text-primary-800">
-                    <span className="text-primary-400">•</span> {evt}
+                  <li key={i} className="flex gap-2 text-sm text-amber-400">
+                    <span className="text-amber-400">•</span> {evt}
                   </li>
                 ))}
               </ul>
@@ -117,7 +117,7 @@ const DocumentCenter = () => {
             <div className="flex-1">
               <Input icon={Search} placeholder="Search documents..." />
             </div>
-            <select className="border border-white/20 rounded-lg px-4 bg-white/5 outline-none focus:ring-2 focus:ring-primary-500">
+            <select className="border border-white/20 rounded-lg px-4 bg-white/5 outline-none focus:ring-2 focus:ring-amber-500">
               <option>All Types</option>
               <option>Court Order</option>
               <option>Petition</option>
@@ -129,7 +129,7 @@ const DocumentCenter = () => {
             {documents.map(doc => (
               <Card key={doc.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary-50 text-primary-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-lg flex items-center justify-center flex-shrink-0">
                     <FileText size={24} />
                   </div>
                   <div>
@@ -155,7 +155,7 @@ const DocumentCenter = () => {
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="flex-1 sm:flex-none text-sm bg-primary-50 text-primary-700 border-primary-200 hover:bg-primary-100"
+                    className="flex-1 sm:flex-none text-sm bg-amber-500/20 text-amber-400 border-amber-500/30 hover:bg-amber-500/20"
                     onClick={() => handleSummarize(doc.id)}
                     disabled={summarizingId === doc.id}
                   >
@@ -176,7 +176,7 @@ const DocumentCenter = () => {
             <h3 className="font-semibold text-lg text-white mb-4">Upload Document</h3>
             
             <div className="border-2 border-dashed border-white/20 rounded-xl p-8 text-center bg-white/5 hover:bg-white/5 transition-colors cursor-pointer mb-4">
-              <UploadCloud className="mx-auto text-primary-500 mb-3" size={32} />
+              <UploadCloud className="mx-auto text-amber-400 mb-3" size={32} />
               <p className="font-medium text-slate-300 mb-1">Drag & Drop your document here</p>
               <p className="text-sm text-slate-500 mb-4">or</p>
               <Button variant="secondary" size="sm" onClick={handleUpload} disabled={uploading}>

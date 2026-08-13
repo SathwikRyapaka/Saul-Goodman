@@ -49,7 +49,7 @@ const Notifications = () => {
           <h1 className="text-2xl font-bold text-white flex items-center gap-3">
             {t('notifications')}
             {unreadCount > 0 && (
-              <span className="bg-primary-100 text-primary-700 py-0.5 px-2.5 rounded-full text-sm font-bold">
+              <span className="bg-amber-500/20 text-amber-400 py-0.5 px-2.5 rounded-full text-sm font-bold">
                 {unreadCount} New
               </span>
             )}
@@ -71,14 +71,14 @@ const Notifications = () => {
           </Card>
         ) : (
           notifications.map(n => (
-            <Card key={n.id} className={cn("flex gap-4 p-5 transition-colors", !n.read ? "bg-primary-50/50 border-primary-200" : "")}>
+            <Card key={n.id} className={cn("flex gap-4 p-5 transition-colors", !n.read ? "bg-amber-500/20/50 border-amber-500/30" : "")}>
               <div className={cn("w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 mt-1", getBg(n.type))}>
                 {getIcon(n.type)}
               </div>
               
               <div className="flex-1">
                 <div className="flex justify-between items-start mb-1">
-                  <h3 className={cn("font-semibold", !n.read ? "text-primary-900" : "text-white")}>
+                  <h3 className={cn("font-semibold", !n.read ? "text-amber-400" : "text-white")}>
                     {n.title}
                   </h3>
                   <span className="text-xs font-medium text-slate-500 whitespace-nowrap ml-4">
@@ -91,7 +91,7 @@ const Notifications = () => {
                   {!n.read && (
                     <button 
                       onClick={() => markAsRead(n.id)}
-                      className="text-xs font-medium text-primary-600 hover:text-primary-700"
+                      className="text-xs font-medium text-amber-400 hover:text-amber-400"
                     >
                       {t('markAsRead')}
                     </button>
@@ -106,7 +106,7 @@ const Notifications = () => {
               </div>
               
               {!n.read && (
-                <div className="w-2.5 h-2.5 rounded-full bg-primary-600 flex-shrink-0 mt-2"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-500 flex-shrink-0 mt-2"></div>
               )}
             </Card>
           ))

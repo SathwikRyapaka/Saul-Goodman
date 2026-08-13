@@ -33,7 +33,7 @@ const Settings = () => {
     <button 
       type="button" 
       onClick={onChange}
-      className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${checked ? 'bg-primary-600' : 'bg-white/10'}`}
+      className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 ${checked ? 'bg-amber-500' : 'bg-white/10'}`}
     >
       <span className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white/5 shadow ring-0 transition duration-200 ease-in-out ${checked ? 'translate-x-5' : 'translate-x-0'}`} />
     </button>
@@ -46,7 +46,7 @@ const Settings = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="md:col-span-1">
           <nav className="space-y-1 sticky top-6">
-            <button className="w-full flex items-center gap-3 px-3 py-2 bg-primary-50 text-primary-700 rounded-lg font-medium text-sm">
+            <button className="w-full flex items-center gap-3 px-3 py-2 bg-amber-500/20 text-amber-400 rounded-lg font-medium text-sm">
               <Bell size={18} /> Notifications
             </button>
             <button className="w-full flex items-center gap-3 px-3 py-2 text-slate-400 hover:bg-white/5 rounded-lg font-medium text-sm transition-colors">
@@ -64,7 +64,7 @@ const Settings = () => {
         <div className="md:col-span-3 space-y-6">
           <Card>
             <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-              <Bell className="text-primary-600" />
+              <Bell className="text-amber-400" />
               <h3 className="text-lg font-bold text-white">Notification Settings</h3>
             </div>
             
@@ -111,7 +111,7 @@ const Settings = () => {
 
           <Card>
             <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-              <Globe className="text-primary-600" />
+              <Globe className="text-amber-400" />
               <h3 className="text-lg font-bold text-white">Language</h3>
             </div>
             
@@ -122,7 +122,7 @@ const Settings = () => {
                   name="language" 
                   checked={language === 'en'} 
                   onChange={() => setLanguage('en')}
-                  className="w-4 h-4 text-primary-600 focus:ring-primary-500 border-white/20"
+                  className="w-4 h-4 text-amber-400 focus:ring-amber-500 border-white/20"
                 />
                 <div className="ml-3">
                   <span className="block font-medium text-white">English</span>
@@ -135,7 +135,7 @@ const Settings = () => {
                   name="language" 
                   checked={language === 'te'} 
                   onChange={() => setLanguage('te')}
-                  className="w-4 h-4 text-primary-600 focus:ring-primary-500 border-white/20"
+                  className="w-4 h-4 text-amber-400 focus:ring-amber-500 border-white/20"
                 />
                 <div className="ml-3">
                   <span className="block font-medium text-white">Telugu (తెలుగు)</span>
@@ -146,7 +146,7 @@ const Settings = () => {
 
           <Card>
             <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-              <Accessibility className="text-primary-600" />
+              <Accessibility className="text-amber-400" />
               <h3 className="text-lg font-bold text-white">Accessibility</h3>
             </div>
             

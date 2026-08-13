@@ -58,10 +58,10 @@ const LegalServices = () => {
         ))}
       </div>
 
-      <div className="bg-primary-900 text-white rounded-xl p-8 text-center mt-12">
+      <div className="bg-amber-500/10 text-white rounded-xl p-8 text-center mt-12">
         <h3 className="text-xl font-bold mb-4">Need Immediate Assistance?</h3>
-        <p className="text-primary-100 mb-6 max-w-2xl mx-auto">Toll-free national legal helpline for legal advice and information.</p>
-        <div className="inline-flex items-center justify-center px-6 py-3 bg-white/5 text-primary-900 font-bold rounded-lg text-lg tracking-wider shadow-lg">
+        <p className="text-amber-200 mb-6 max-w-2xl mx-auto">Toll-free national legal helpline for legal advice and information.</p>
+        <div className="inline-flex items-center justify-center px-6 py-3 bg-white/5 text-amber-400 font-bold rounded-lg text-lg tracking-wider shadow-lg">
           15100
         </div>
       </div>

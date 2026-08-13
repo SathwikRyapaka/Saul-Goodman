@@ -40,21 +40,21 @@ const Dashboard = () => {
       </div>
 
       {/* Main Action Bar */}
-      <Card className="flex flex-col sm:flex-row items-center gap-4 bg-primary-900 text-white border-none">
+      <Card className="flex flex-col sm:flex-row items-center gap-4 bg-amber-500/10 text-white border-none">
         <div className="relative flex-1 w-full">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
           <input 
             type="text" 
             placeholder={t('searchPlaceholder')}
-            className="w-full pl-10 pr-4 py-3 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="w-full pl-10 pr-4 py-3 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
             onClick={() => navigate('/search')}
           />
         </div>
         <div className="flex gap-3 w-full sm:w-auto">
-          <Button className="flex-1 sm:flex-none bg-primary-600 hover:bg-primary-500 text-white" onClick={() => navigate('/search')}>
+          <Button className="flex-1 sm:flex-none bg-amber-500 hover:bg-amber-500 text-white" onClick={() => navigate('/search')}>
             {t('searchCase')}
           </Button>
-          <Button className="flex-1 sm:flex-none bg-white/5 text-primary-900 hover:bg-white/5" onClick={() => navigate('/voice')}>
+          <Button className="flex-1 sm:flex-none bg-white/5 text-amber-400 hover:bg-white/5" onClick={() => navigate('/voice')}>
             <Mic size={18} className="mr-2" /> {t('useVoice')}
           </Button>
         </div>

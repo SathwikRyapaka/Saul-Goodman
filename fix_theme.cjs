@@ -3,27 +3,9 @@ const path = require('path');
 
 const directories = [
   path.join(__dirname, 'src', 'pages'),
-  path.join(__dirname, 'src', 'components')
+  path.join(__dirname, 'src', 'components'),
+  path.join(__dirname, 'src', 'layouts')
 ];
-
-const replacements = {
-  'text-slate-900': 'text-white',
-  'text-slate-800': 'text-slate-200',
-  'text-slate-700': 'text-slate-300',
-  'text-slate-600': 'text-slate-400',
-  'text-gray-900': 'text-white',
-  'text-gray-800': 'text-slate-200',
-  'text-gray-700': 'text-slate-300',
-  'text-gray-600': 'text-slate-400',
-  'bg-slate-50': 'bg-white/5',
-  'bg-slate-100': 'bg-white/5',
-  'bg-slate-200': 'bg-white/10',
-  'border-slate-200': 'border-white/10',
-  'border-slate-300': 'border-white/20',
-  'hover:bg-slate-50': 'hover:bg-white/5',
-  'hover:bg-slate-100': 'hover:bg-white/10',
-  'hover:border-slate-300': 'hover:border-white/20',
-};
 
 function processDirectory(dir) {
   const files = fs.readdirSync(dir);
@@ -33,25 +15,33 @@ function processDirectory(dir) {
       processDirectory(fullPath);
     } else if (fullPath.endsWith('.jsx')) {
       let content = fs.readFileSync(fullPath, 'utf8');
-      let modified = false;
+      const originalContent = content;
 
-      for (const [oldClass, newClass] of Object.entries(replacements)) {
-        const regex = new RegExp(`\\b${oldClass}\\b`, 'g');
-        if (regex.test(content)) {
-          content = content.replace(regex, newClass);
-          modified = true;
-        }
-      }
+      // Primary text classes
+      content = content.replace(/text-primary-(900|800|700|600|500|400|300)/g, 'text-amber-400');
+      content = content.replace(/text-primary-(100|50)/g, 'text-amber-200');
+      content = content.replace(/hover:text-primary-(900|800|700|600|500|400)/g, 'hover:text-amber-300');
 
-      const bgWhiteRegex = /\bbg-white\b(?!\/)/g;
-      if (bgWhiteRegex.test(content)) {
-        if (!fullPath.includes('Landing.jsx') && !fullPath.includes('Login.jsx') && !fullPath.includes('Button.jsx')) {
-           content = content.replace(bgWhiteRegex, 'bg-white/5');
-           modified = true;
-        }
-      }
+      // Primary background classes
+      content = content.replace(/bg-primary-900/g, 'bg-amber-500/10');
+      content = content.replace(/bg-primary-(800|700|600|500)/g, 'bg-amber-500');
+      content = content.replace(/bg-primary-(100|50)/g, 'bg-amber-500/20');
+      content = content.replace(/hover:bg-primary-(100|50)/g, 'hover:bg-amber-500/30');
+      content = content.replace(/hover:bg-primary-(900|800|700|600|500)/g, 'hover:bg-amber-400');
 
-      if (modified) {
+      // Primary border classes
+      content = content.replace(/border-primary-(100|200)/g, 'border-amber-500/30');
+      content = content.replace(/border-primary-(300|400)/g, 'border-amber-500/50');
+      content = content.replace(/border-primary-(500|600|700|800|900)/g, 'border-amber-500');
+      content = content.replace(/hover:border-primary-[0-9]+/g, 'hover:border-amber-400');
+
+      // Misc
+      content = content.replace(/shadow-primary-[0-9]+(\/[0-9]+)?/g, 'shadow-amber-500/20');
+      content = content.replace(/ring-primary-[0-9]+/g, 'ring-amber-500');
+      content = content.replace(/focus:ring-primary-[0-9]+/g, 'focus:ring-amber-500');
+      content = content.replace(/focus:border-primary-[0-9]+/g, 'focus:border-amber-400');
+
+      if (content !== originalContent) {
         fs.writeFileSync(fullPath, content, 'utf8');
         console.log(`Updated: ${fullPath}`);
       }

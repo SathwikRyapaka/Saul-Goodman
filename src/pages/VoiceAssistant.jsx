@@ -70,7 +70,7 @@ const VoiceAssistant = () => {
       <div className="relative flex justify-center items-center h-48 w-48">
         {isListening && (
           <>
-            <div className="absolute inset-0 bg-primary-100 rounded-full animate-ping opacity-75"></div>
+            <div className="absolute inset-0 bg-amber-500/20 rounded-full animate-ping opacity-75"></div>
             <div className="absolute inset-4 bg-primary-200 rounded-full animate-pulse"></div>
           </>
         )}
@@ -78,7 +78,7 @@ const VoiceAssistant = () => {
         <button
           onClick={isListening ? stopListening : startListening}
           className={`relative z-10 w-24 h-24 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-105 active:scale-95 ${
-            isListening ? 'bg-red-500 text-white shadow-red-500/50' : 'bg-primary-600 text-white shadow-primary-600/50'
+            isListening ? 'bg-red-500 text-white shadow-red-500/50' : 'bg-amber-500 text-white shadow-amber-500/20'
           }`}
         >
           {isListening ? <Square size={32} fill="currentColor" /> : <Mic size={40} />}
@@ -86,9 +86,9 @@ const VoiceAssistant = () => {
       </div>
 
       <div className="text-center w-full max-w-lg min-h-[120px]">
-        {isListening && <p className="text-lg text-primary-600 font-medium animate-pulse">{t('listening')}</p>}
+        {isListening && <p className="text-lg text-amber-400 font-medium animate-pulse">{t('listening')}</p>}
         {isProcessing && (
-          <div className="flex items-center justify-center gap-2 text-primary-600 font-medium">
+          <div className="flex items-center justify-center gap-2 text-amber-400 font-medium">
             <Loader2 className="animate-spin" /> {t('processing')}
           </div>
         )}
@@ -101,11 +101,11 @@ const VoiceAssistant = () => {
         )}
 
         {!isListening && !isProcessing && response && (
-          <div className="bg-primary-50 p-6 rounded-xl border border-primary-100 shadow-sm text-left relative">
-            <div className="absolute -top-3 left-6 bg-primary-500 text-xs font-bold px-2 py-0.5 rounded text-white">Nyaya Setu</div>
-            <p className="text-primary-900 font-medium leading-relaxed">{response}</p>
+          <div className="bg-amber-500/20 p-6 rounded-xl border border-amber-500/30 shadow-sm text-left relative">
+            <div className="absolute -top-3 left-6 bg-amber-500 text-xs font-bold px-2 py-0.5 rounded text-white">Nyaya Setu</div>
+            <p className="text-amber-400 font-medium leading-relaxed">{response}</p>
             <button 
-              className="mt-4 flex items-center gap-2 text-sm text-primary-600 hover:text-primary-700 font-medium"
+              className="mt-4 flex items-center gap-2 text-sm text-amber-400 hover:text-amber-400 font-medium"
               onClick={() => {
                 const utterance = new SpeechSynthesisUtterance(response);
                 utterance.lang = language === 'en' ? 'en-IN' : 'te-IN';

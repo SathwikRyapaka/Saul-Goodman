@@ -9,7 +9,7 @@ import { Badge } from '../components/Badge';
 
 const CaseCard = ({ data, t, onNavigate }) => {
   return (
-    <Card className="hover:border-primary-300 transition-colors">
+    <Card className="hover:border-amber-500/50 transition-colors">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
         <div>
           <h3 className="font-bold text-lg text-white">{data.caseNumber}</h3>
@@ -42,7 +42,7 @@ const CaseCard = ({ data, t, onNavigate }) => {
       <div className="bg-white/5 rounded-lg p-4 mb-6 flex justify-between items-center">
         <div>
           <span className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">{t('currentStage')}</span>
-          <span className="font-semibold text-primary-700">{data.currentStage}</span>
+          <span className="font-semibold text-amber-400">{data.currentStage}</span>
         </div>
         <div className="text-right">
           <span className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">{t('nextHearing')}</span>
@@ -53,7 +53,7 @@ const CaseCard = ({ data, t, onNavigate }) => {
       <div className="flex flex-wrap gap-2">
         <Button className="flex-1" onClick={() => onNavigate(`/cases/${data.id}`)}>{t('viewCase')}</Button>
         <Button variant="outline" className="flex-1" onClick={() => onNavigate(`/cases/${data.id}?tab=timeline`)}>{t('timeline')}</Button>
-        <Button variant="secondary" className="flex-none text-primary-700 border-primary-200 bg-primary-50" onClick={() => onNavigate('/ai-explain')}>
+        <Button variant="secondary" className="flex-none text-amber-400 border-amber-500/30 bg-amber-500/20" onClick={() => onNavigate('/ai-explain')}>
           <BrainCircuit size={18} />
         </Button>
       </div>
@@ -90,7 +90,7 @@ const MyCases = () => {
             onClick={() => setFilter(c)}
             className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
               filter === c 
-                ? 'bg-primary-700 text-white' 
+                ? 'bg-amber-500 text-white' 
                 : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-white/5'
             }`}
           >

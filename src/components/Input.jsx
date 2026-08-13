@@ -11,7 +11,7 @@ export const Input = ({ className, icon: Icon, ...props }) => {
       )}
       <input
         className={cn(
-          "block w-full rounded-lg border-white/20 shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border px-4 py-2 bg-white/5 text-white placeholder:text-slate-400 outline-none transition-colors",
+          "block w-full rounded-lg border-white/20 shadow-sm focus:ring-amber-500 focus:border-amber-500 sm:text-sm border px-4 py-2 bg-white/5 text-white placeholder:text-slate-400 outline-none transition-colors",
           Icon && "pl-10",
           className
         )}

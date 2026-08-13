@@ -22,11 +22,11 @@ const Hearings = () => {
           <div className="space-y-4">
             {mockCases.map(c => (
               <Card key={c.id} className="flex flex-col sm:flex-row gap-6 p-0 overflow-hidden">
-                <div className="bg-primary-50 p-6 flex flex-col justify-center items-center min-w-[120px] border-r border-primary-100">
-                  <span className="text-4xl font-bold text-primary-700">
+                <div className="bg-amber-500/20 p-6 flex flex-col justify-center items-center min-w-[120px] border-r border-amber-500/30">
+                  <span className="text-4xl font-bold text-amber-400">
                     {new Date(c.nextHearing).getDate()}
                   </span>
-                  <span className="text-sm font-bold uppercase tracking-widest text-primary-600 mt-1">
+                  <span className="text-sm font-bold uppercase tracking-widest text-amber-400 mt-1">
                     {new Date(c.nextHearing).toLocaleString('default', { month: 'short' })}
                   </span>
                 </div>
@@ -43,13 +43,13 @@ const Hearings = () => {
                       </div>
                       <div>
                         <span className="block text-slate-400 mb-0.5">Stage</span>
-                        <span className="font-medium text-primary-600">{c.currentStage}</span>
+                        <span className="font-medium text-amber-400">{c.currentStage}</span>
                       </div>
                     </div>
                   </div>
                   
                   <div className="mt-6 pt-4 border-t border-slate-100 flex justify-end">
-                    <Button variant="secondary" className="text-primary-700 border-primary-200 hover:bg-primary-50">
+                    <Button variant="secondary" className="text-amber-400 border-amber-500/30 hover:bg-amber-500/20">
                       <Bell size={16} className="mr-2" /> Set Reminder
                     </Button>
                   </div>
@@ -81,7 +81,7 @@ const Hearings = () => {
                   <div 
                     key={i} 
                     className={`aspect-square flex items-center justify-center rounded-full cursor-pointer hover:bg-white/5 transition-colors ${
-                      isHearingDay ? 'bg-primary-100 text-primary-700 font-bold border border-primary-300' : 'text-slate-300'
+                      isHearingDay ? 'bg-amber-500/20 text-amber-400 font-bold border border-amber-500/50' : 'text-slate-300'
                     }`}
                   >
                     {i + 1}
@@ -93,7 +93,7 @@ const Hearings = () => {
             <div className="mt-6 pt-6 border-t border-slate-100">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Legend</h4>
               <div className="flex items-center gap-2 text-sm text-slate-400">
-                <span className="w-3 h-3 rounded-full bg-primary-100 border border-primary-300"></span>
+                <span className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/50"></span>
                 Hearing Scheduled
               </div>
             </div>
